@@ -99,6 +99,8 @@ int start_listening(CequiqConfig *config) {
   if (listen_socket == -1) {
     return -1;
   }
+
+  LOG(GREEN "started cequiq server on port: %d" RESET, config->port_number);
   int epollfd, nfds, n, fd;
   struct sockaddr_in addr;
   socklen_t addr_size = sizeof(addr);

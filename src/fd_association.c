@@ -195,7 +195,7 @@ WriteNode **get_write_queue_head(int fd) {
 
 // A wrapper for `get_current_id` to have a better name for public API and
 // returns a copy of the data
-char *get_connection_id() {
+char *cq_get_connection_id() {
   const char *id = get_current_id();
   char *copied = strdup(id);
   return copied;

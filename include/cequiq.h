@@ -63,7 +63,7 @@ int cequiq_start(CequiqConfig *config);
  * 
  * @return A dynamically allocated string containing the connection ID. The caller must free the memory.
  */
-char *get_connection_id();
+char *cq_get_connection_id();
 
 /**
  * @brief Writes data to a connection.
@@ -73,5 +73,5 @@ char *get_connection_id();
  * @param size Size of the data in bytes.
  * @return -1 on failure.
  */
-int cequiq_write(const char *conn_id, void *data, uint64_t size);
+int cequiq_write(const char *conn_id, const void *data, uint64_t size);
 

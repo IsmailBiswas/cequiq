@@ -10,7 +10,7 @@ void data_callback(const void *data, uint64_t size) {
   (void)data;
   (void)size;
   LOG("DATA CALLBACK FUNCTION");
-  LOG("connection id %s", get_connection_id());
+  LOG("connection id %s", cq_get_connection_id());
   char *res_data = strdup("123456789");
   char *res_data2 = strdup("987654321");
   char *res_data3 = strdup(END_DATA);

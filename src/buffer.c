@@ -301,7 +301,7 @@ int cequiq_write_ssl(int fd) {
 typedef struct {
   char prefix[PREFIX_LENGTH];
   uint64_t d_size;
-  void *data;
+  const void *data;
 } Frame;
 
 void *serialize_frame(const Frame *f, size_t *net_size) {
@@ -329,11 +329,11 @@ void *serialize_frame(const Frame *f, size_t *net_size) {
   return buffer;
 }
 
-static int write_queue(const char *conn_id, void *data, uint64_t data_size) {
+static int write_queue(const char *conn_id, const void *data,
+                       uint64_t data_size) {
   size_t net_size;
   Frame f = {.prefix = PREFIX, .d_size = data_size, .data = data};
   void *s_data = serialize_frame(&f, &net_size);
-  free(data);
 
   WriteBuffer *write_buffer = malloc(sizeof(WriteBuffer));
   if (!write_buffer) {
@@ -363,6 +363,6 @@ static int write_queue(const char *conn_id, void *data, uint64_t data_size) {
 }
 
 /* write_queue wrapper */
-int cequiq_write(const char *conn_id, void *data, uint64_t size) {
+int cequiq_write(const char *conn_id, const void *data, uint64_t size) {
   return write_queue(conn_id, data, size);
 }
