@@ -3,9 +3,16 @@ cmake_minimum_required(VERSION 3.20)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_compile_options(-Wall -Wextra -Wunused-function)
 
+option(ENABLE_TESTING "Enable unit tests" OFF)
+
+option(ENABLE_LOGGING "Enable debug logging" OFF)
+if(ENABLE_LOGGING)
+  add_definitions(-DDEBUG)
+endif()
+
 # Project name and language
 project(cequiq LANGUAGES C)
-enable_testing()
+# enable_testing()
 
 # Set the version of the library
 set(CEQUIQ_VERSION_MAJOR 0)
@@ -62,4 +69,9 @@ install(EXPORT cequiqTargets
         NAMESPACE cequiq::
         DESTINATION lib/cmake/cequiq)
 
-add_subdirectory(test)
+if(ENABLE_TESTING)
+  enable_testing()
+  add_subdirectory(test)
+endif()
+
+# add_subdirectory(test)

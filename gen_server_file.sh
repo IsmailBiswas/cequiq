@@ -3,7 +3,6 @@ set -e
 CERT_DIR="server_files"
 KEY_FILE="$CERT_DIR/private_key.pem"
 CERT_FILE="$CERT_DIR/certificate.pem"
-INVITE_FILE="$CERT_DIR/invite_keys.txt"
 
 mkdir -p "$CERT_DIR"
 

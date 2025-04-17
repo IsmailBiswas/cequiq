@@ -1,8 +1,6 @@
 #pragma once 
 #include <stdint.h>
 
-#define DEBUG  // Comment this out to disable debug logs
-
 #ifdef DEBUG
     #define RED "\x1b[31m"
     #define GREEN "\x1b[32m"

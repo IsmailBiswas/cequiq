@@ -226,7 +226,9 @@ int read_data(CequiqConfig *config) {
     // and connection will be closed
     if (read_bytes <= 0) {
       if (SSL_get_error(ssl, read_bytes) != SSL_ERROR_WANT_READ) {
+#ifdef DEBUG
         print_ssl_error(ssl, read_bytes);
+#endif
         should_free_buffer = 1;
       }
     }

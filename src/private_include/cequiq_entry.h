@@ -9,7 +9,6 @@
 #define RESET "\x1b[0m"
 #define ORANGE "\x1b[38;5;214m"
 
-#define DEBUG  // Comment this out to disable debug logs
 
 #ifdef DEBUG
     #define LOG(fmt, ...) printf(GREEN "[+] " RESET fmt "\n", ##__VA_ARGS__)

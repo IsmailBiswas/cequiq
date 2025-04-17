@@ -100,7 +100,7 @@ int start_listening(CequiqConfig *config) {
     return -1;
   }
 
-  LOG(GREEN "started cequiq server on port: %d" RESET, config->port_number);
+  printf(GREEN "listening on port: %d\n" RESET, config->port_number);
   int epollfd, nfds, n, fd;
   struct sockaddr_in addr;
   socklen_t addr_size = sizeof(addr);
