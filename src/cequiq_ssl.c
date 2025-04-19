@@ -78,10 +78,15 @@ int store_certificate_hash(const char *cert) {
 
   // store certificate hash to storage
   FILE *hash_file = fopen(hash_file_location, "wb");
+  if (hash_file != NULL) {
+    fwrite(hash_str, 1, strlen(hash_str), hash_file);
+    fclose(hash_file);
+  } else {
+    LOG("Error opening the file");
+  }
 
   // not explicitly checking if fwrite succeeds because it's returning anyways
 
-  fclose(hash_file);
   free(hash_file_location);
   free(hash_str);
   return 0;
